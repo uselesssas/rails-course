@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item!, only: %i[show edit update destroy]
+  before_action :set_item!, only: %i[show edit update destroy upvote]
 
   def index
     @items = Item.all
@@ -33,6 +33,16 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to items_path, info: "Item deleted", status: :see_other
+  end
+
+  def upvote
+    @item.increment! :votes_count
+    redirect_to items_path
+  end
+
+  def expensive
+    @items = Item.where('price > 5')
+    render :index
   end
 
   private
