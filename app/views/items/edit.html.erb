@@ -1,0 +1,19 @@
+<%= form_with model: @item do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, required: true, placeholder: 'Name' %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.radio_button :real, true %>
+  <%= f.label :age_child, "true" %>
+  <%= f.radio_button :real, false %>
+  <%= f.label :age_adult, "false" %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit 'Submit' %>
+<% end %>
+
+<%= link_to 'Back', items_path %>
